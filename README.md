@@ -1,3 +1,11 @@
+# Lab-29
+
+## Links
+[Pull Request](https://github.com/Schwamman-401-advanced-javascript/lab-29/pull/1)
+[Travis](https://www.travis-ci.com/Schwamman-401-advanced-javascript/lab-29)
+[Netlify](https://silly-mclean-7b8703.netlify.com/)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -38,7 +38,7 @@ class Form extends React.Component {
             <input id='item' placeholder='Add To Do List Item' onChange={this.inputItem}></input>
             <input id='assigned' placeholder='Assigned to' onChange={this.inputAssigned}></input>
             <input id='date' type='date' onChange={this.inputDate}></input>
-            <input type='submit'></input>
+            <input id='submit' type='submit'></input>
           </form>
         </div>
       </>

@@ -9,7 +9,7 @@ class Header extends React.Component {
     return(
       <>
         <header id='header'>
-          <h2>{`There are ${this.props.length} Items to Complete`}</h2>
+          <h2>There are <span id='itemCount'>{this.props.length}</span> Items to Complete</h2>
         </header>
       </>
     )

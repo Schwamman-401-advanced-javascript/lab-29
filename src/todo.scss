@@ -1,34 +1,42 @@
-.todo ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.todo {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-family: monospace;
+
+  header {
+    margin: 15px;
+    font-size: 1.4rem;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  form {
+    width: 90%;
+    margin: auto;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 15px;
+
+    input {
+      display: block;
+      margin: auto;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding: 5px;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    input#submit {
+      cursor: pointer;
+      width: 50%;
+    }
+  }
 }
 
-.todo ul li {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  font-size: .75em;
-  margin: .75em .5em;
-}
-
-.todo ul li.complete-true span {
-  background: pink;
-  text-decoration: line-through;
-}
-
-.todo ul li.complete-true span:hover {
-  background: seagreen;
-}
-
-.todo ul li span {
-  background: #e0e0e0;
-  cursor: pointer;
-}
-
-.todo ul li span:hover {
-  background: pink;
-}
 
 .todo ul li span, .todo ul li input {
   border: .5px solid #eee;
@@ -37,11 +45,44 @@
   width: 300px;
 }
 
-.todo ul li button {
-  background: transparent;
-  border: none;
-  color: blue;
-  cursor: pointer;
-  padding: 0;
-  margin: 0 .75em;
+#items {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+
+    li {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      font-size: 1rem;
+      margin: .75em .5em;
+
+      span {
+        background: #e0e0e0;
+        cursor: pointer;
+      }
+
+      span:hover {
+        background: pink;
+      }
+
+      button {
+        color: blue;
+        cursor: pointer;
+        padding: 3px;
+        border-radius: 2px;
+        margin: 0 .5rem;
+      }
+    }
+
+    li.complete-true span {
+      background: pink;
+      text-decoration: line-through;
+    }
+
+    li.complete-true span:hover {
+      background: seagreen;
+    }
+  }
 }
