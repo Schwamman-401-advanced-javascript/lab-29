@@ -5,16 +5,29 @@ class Form extends React.Component {
     super(props);
     this.state = {
       input: undefined,
+      assigned: undefined,
+      dueDate: undefined,
     }
   }
 
-  handleChange = e => {
-    this.setState({ input: e.target.value })
+  inputItem = e => {
+    this.setState({ input: e.target.value });
+  }
+
+  inputAssigned = e => {
+    console.log(`Assigned: ${e.target.value}`);
+    this.setState({ assigned: e.target.value });
+  }
+
+  inputDate = e => {
+    console.log(`Assigned: ${e.target.value}`);
+    this.setState({ dueDate: e.target.value });
   }
 
   submitData = e => {
     e.preventDefault();
-    this.props.add(this.state.input);
+    console.log(this.state);
+    this.props.add(this.state.input, this.state.assigned, this.state.dueDate);
   }
 
   render() {
@@ -22,7 +35,10 @@ class Form extends React.Component {
       <>
         <div>
           <form onSubmit={this.submitData} id='todoForm'>
-            <input id='item' placeholder='Add To Do List Item' onChange={this.handleChange}></input>
+            <input id='item' placeholder='Add To Do List Item' onChange={this.inputItem}></input>
+            <input id='assigned' placeholder='Assigned to' onChange={this.inputAssigned}></input>
+            <input id='date' type='date' onChange={this.inputDate}></input>
+            <input type='submit'></input>
           </form>
         </div>
       </>

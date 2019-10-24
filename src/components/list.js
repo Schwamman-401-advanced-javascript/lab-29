@@ -1,4 +1,6 @@
 import React from 'react';
+import { If } from './if';
+import Modal from './modal'
 
 class List extends React.Component {
   constructor(props) {
@@ -7,12 +9,16 @@ class List extends React.Component {
 
   handleToggle = e => {
     let id = parseFloat(e.target.id);
-    this.props.toggle(id);
+    this.props.toggleComplete(id);
   }
 
   handleDelete = e => {
     let id = parseFloat(e.target.value);
     this.props.delete(id);
+  }
+
+  handleDetails = id => {
+    this.props.toggleModal(id);
   }
 
   displayClass(boolean) {
@@ -30,7 +36,16 @@ class List extends React.Component {
                   <>
                     <li className={this.displayClass(item.complete)} key={item.id}>
                       <span onClick={this.handleToggle} id={item.id}>{item.text}</span>
-                      <button onClick={this.handleDelete} className={this.displayClass(item.complete)} key={item.id + 1} value={item.id}>delete</button>
+                      <button onClick={this.handleDelete} value={item.id}>delete</button>
+                      <button className='details' onClick={() => this.handleDetails(item.id)}>details</button>
+                      <If condition={item.showModal}>
+                        <Modal title='Details' close={() => this.handleDetails(item.id)}>
+                          <p className='toDoDetails'>{`To Do: ${item.text}`}</p>
+                          <p>{`Assigned To: ${item.assigned}`}</p>
+                          <p>{`Due Date: ${item.dueDate}`}</p>
+                          <p>{`Completed: ${item.complete}`}</p>
+                        </Modal>
+                      </If>
                     </li>
                   </>
                 ))

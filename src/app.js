@@ -14,10 +14,10 @@ class App extends React.Component {
     }
   }
 
-  addItem = (string) => {
-    let newList = this.state.toDo.concat(new Item(string));
+  addItem = (string, assigned, date) => {
+    let newList = this.state.toDo.concat(new Item(string, assigned, date));
+    console.log(newList);
     this.setState({ toDo: newList});
-    console.log(this.state);
   }
 
   deleteItem = (id) => {
@@ -27,14 +27,26 @@ class App extends React.Component {
 
   //Need to refactor - state being modified directly
   toggleComplete = id => {
-    console.log(id);
-    let newList = this.state.toDo.map((e) => e);
-    let item = newList.filter(item => item.id === id)[0] || {};
-    if (item.id) {
-      item.toggle();
-      this.setState({ toDo: newList});
-      console.log(this.state.toDo);
-    }
+    let newList = this.state.toDo.map(item => 
+        item.id === id ? 
+          {
+            ...item, 
+            complete: !item.complete,
+          } : item
+      );
+
+    this.setState({ toDo: newList });
+  }
+
+  toggleModal = id => {
+   let newList = this.state.toDo.map(item => 
+        item.id === id ? 
+          {
+            ...item, 
+            showModal: !item.showModal,
+          } : item
+      );
+    this.setState({ toDo: newList });
   }
 
   render() {
@@ -49,7 +61,8 @@ class App extends React.Component {
           />
           <List 
             list = {this.state.toDo}
-            toggle = {this.toggleComplete}
+            toggleComplete = {this.toggleComplete}
+            toggleModal = {this.toggleModal}
             delete = {this.deleteItem}
           />
         </section>
